@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
+import Image from "next/image";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +29,33 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <header className="fixed top-0 w-full z-50 backdrop-blur-sm bg-green-950/75 text-white px-8 py-6 flex justify-between justify-center items-center border-b border-zinc-800/40">
+          <nav>
+            <ul className="flex gap-6">
+              <li>
+                <Link href="/" className="hover:text-zinc-300 transition-colors">Map</Link>
+              </li>
+              <li>
+                <Link href="/Events" className="hover:text-zinc-300 transition-colors">Events</Link>
+              </li>
+              <li>
+                <Image
+                  src="/usc-logo.png"
+                  alt="USC Logo"
+                  width={40}
+                  height={40}
+                  className="rounded-full"
+                />
+              </li>
+              <li>
+                <Link href="/Facilities" className="hover:text-zinc-300 transition-colors">Facilities</Link>
+              </li>
+              <li>
+                <Link href="/Food" className="hover:text-zinc-300 transition-colors">Food</Link>
+              </li>
+            </ul>
+          </nav>
+        </header>
         {children}
       </body>
     </html>
